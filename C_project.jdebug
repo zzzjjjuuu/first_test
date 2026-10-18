@@ -1,0 +1,12 @@
+void OnProjectLoad (void) {
+  // 1. 显式指定芯片型号 (必须放在 File.Open 之前执行)
+  Project.SetDevice ("STM32F407IG");
+  
+  // 2. 设置调试器通信接口 (SWD, 4MHz)
+  Project.SetHostIF ("USB", "");
+  Project.SetTargetIF ("SWD");
+  Project.SetTIFSpeed ("4 MHz");
+  
+  // 3. 打开编译生成的固件 (自动根据工程目录寻址)
+  File.Open ("$(ProjectDir)/build/Debug/C_project.elf");
+}
